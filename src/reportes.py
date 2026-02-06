@@ -1,9 +1,7 @@
-from __future__ import annotations
-
+# Bono
 from abc import ABC, abstractmethod
 import csv
 import json
-
 from src.portafolio import Portafolio
 
 # CONTRATO (OCP)
@@ -12,6 +10,7 @@ class Exportador(ABC):
     @abstractmethod
     def guardar(self, datos: list[dict], ruta: str) -> None:
         pass
+
 
 
 # CSV
@@ -35,18 +34,17 @@ class ExportadorJSON(Exportador):
     def guardar(self, datos: list[dict], ruta: str) -> None:
         with open(ruta, "w", encoding="utf-8") as f:
             json.dump(datos, f, indent=4, ensure_ascii=False)
+from src.portafolio import Portafolio
+from src.modelos import Posicion, Instrumento
 
 
-class ReportadorFinanciero:
-    """Clase que NO guarda datos. Solo recibe un Portafolio y genera salidas."""
-
+class Reportadorfinanciero:
+    """
+    Esta clase no guarda cambios. Solo recibe un portafolio y genera salidad
+    """
     def imprimir_resumen(self, portafolio):
-        print("=" * 70)
-        print("                 RESUMEN DEL PORTAFOLIO                 ")
-        print("=" * 70)
-        print(f"Total de posiciones: {len(portafolio.posiciones)}")
-        print()
-
+        print("               RESUMEN DEL PORTAFOLIO               ")
+        print(f"Tipo de Clase de Intrumento": {})
         print(
             f"{'Ticker':<8} {'Tipo':<12} {'Sector':<12} "
             f"{'Cantidad':>10} {'P. entrada':>12} {'Invertido':>12}"
@@ -56,7 +54,7 @@ class ReportadorFinanciero:
         valor_total_invertido = 0.0
 
         for posicion in portafolio.posiciones:
-            instrumento = posicion.instrumento
+            instrumento: Instrumento = posicion.instrumento
             invertido = posicion.cantidad * posicion.precio_entrada
             valor_total_invertido += invertido
 
@@ -80,7 +78,7 @@ class ReportadorFinanciero:
         ruta: str
     ) -> None:
 
-        datos: list[dict] = []
+        datos = []
 
         for pos in portafolio.posiciones:
             instrumento = pos.instrumento
@@ -95,3 +93,4 @@ class ReportadorFinanciero:
             })
 
         exportador.guardar(datos, ruta)
+
