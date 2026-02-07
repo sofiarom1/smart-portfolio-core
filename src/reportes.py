@@ -44,7 +44,7 @@ class Reportadorfinanciero:
     """
     def imprimir_resumen(self, portafolio):
         print("               RESUMEN DEL PORTAFOLIO               ")
-        print(f"Tipo de Clase de Intrumento": {})
+        print(f"Tipo de Clase de Intrumento:",{})
         print(
             f"{'Ticker':<8} {'Tipo':<12} {'Sector':<12} "
             f"{'Cantidad':>10} {'P. entrada':>12} {'Invertido':>12}"
