@@ -1,6 +1,8 @@
 # tests/test_models.py
 import pytest
 from src.modelos import Posicion
+import pytest
+from test.exceptions import PosicionNoExisteError
 
 @pytest.mark.parametrize(
     "precio_entrada, precio_actual, cantidad, esperado",
@@ -28,10 +30,6 @@ def test_calculo_pnl(
     )
 
     assert pnl == pytest.approx(esperado)
-
-
-import pytest
-from exceptions import PosicionNoExisteError
 
 def test_remover_activo_inexistente_lanza_error(portafolio_vacio):
     with pytest.raises(PosicionNoExisteError):
