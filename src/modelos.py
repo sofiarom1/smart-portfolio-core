@@ -7,10 +7,10 @@ class Instrumento:
     sector: str
     
 class Posicion:
-    def __init__(self, instrumento:Instrumento, cantidad: float, precio_entrada: float):
-        self.instrumento: Instrumento
-        self.cantidad: float
-        self.precio_entrada: float 
+    def __init__(self, instrumento: Instrumento, cantidad: float, precio_entrada: float):
+        self.instrumento = instrumento
+        self.cantidad = cantidad
+        self.precio_entrada = precio_entrada 
 
     @property
     def cantidad(self) -> float:
