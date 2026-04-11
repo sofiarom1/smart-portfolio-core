@@ -24,3 +24,4 @@ def cantidad(self, value: float) -> None:
 
 def calcular_valor_actual(self, precio_mercado: float) -> float:
         return self.cantidad * float(precio_mercado)
+
