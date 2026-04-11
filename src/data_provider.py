@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 import pandas as pd
 import yfinance as yf
 
+
+
 class MarketDataProvider(ABC):
 
     @abstractmethod
@@ -12,12 +14,13 @@ class MarketDataProvider(ABC):
     def obtener_historia(
         self,
         ticker: str,
-        dias: int
+        dias: int = 365
     ) -> pd.DataFrame:
         pass
 
 
-class YahooFinanceClient:
+
+class YahooFinanceClient(MarketDataProvider):
 
     def obtener_precio_actual(self, ticker: str) -> float:
         try:
@@ -33,19 +36,6 @@ class YahooFinanceClient:
         ticker: str,
         dias: int = 365
     ) -> pd.DataFrame:
-
         t = yf.Ticker(ticker)
-
-        # Simplificación: siempre 1 año
         df = t.history(period="1y")
-
         return df
-list_tickers=['AAPL','TSLA','AMZN','GOOGL','META','NFLLX']
-
-provider = YahooFinanceClient()
-
-precio = provider.obtener_precio_actual("AAPL")
-print("Precio actual:", precio)
-
-hist = provider.obtener_historia("AAPL")
-print(hist.head())

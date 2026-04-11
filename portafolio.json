@@ -1,0 +1,7 @@
+{
+    "ticker": "AAPL",
+    "cantidad": 10.0,
+    "precio_entrada": 260.4800109863281,
+    "prediccion": "Predicci\u00f3n 7 d\u00edas: $284.16 (\ud83d\udcc8 ALZA)",
+    "alerta_riesgo": false
+}
