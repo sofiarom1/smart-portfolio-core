@@ -1,5 +1,6 @@
 from typing import List
 from src.modelos import Posicion
+from test.exceptions import PosicionNoExisteError
 
 
 class PosicionNoExisteError(Exception):
